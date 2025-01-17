@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/socket.io": {
-        target: "http://localhost:5000",
+        target: "https://rohan-garad-full-stack-backend.onrender.com",
         ws: true,
       },
     },
