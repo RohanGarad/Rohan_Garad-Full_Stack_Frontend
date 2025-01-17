@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000", {
+const socket = io("https://rohan-garad-full-stack-backend.onrender.com", {
   withCredentials: true,
 }); // Singleton socket instance
 
@@ -23,7 +23,7 @@ const AdminPage = () => {
 
   if (needsRefresh || !savedScore) {
     axios
-      .get(`http://localhost:5000/api/scores/${matchId}/latest`, {
+      .get(`https://rohan-garad-full-stack-backend.onrender.com/api/scores/${matchId}/latest`, {
         params: { _: new Date().getTime() }, // Prevent caching
       })
       .then((res) => {
@@ -76,7 +76,7 @@ const AdminPage = () => {
   const resetMatchScoreOnServer = async (matchId) => {
     try {
       // Call the backend API to reset the match score data in the database
-      const response = await axios.post(`http://localhost:5000/api/scores/reset/${matchId}`);
+      const response = await axios.post(`https://rohan-garad-full-stack-backend.onrender.com/api/scores/reset/${matchId}`);
       
       if (response.status === 200) {
         console.log("Match score reset successfully.");
@@ -99,7 +99,7 @@ const AdminPage = () => {
     };
 
     axios
-      .post("http://localhost:5000/api/scores/ball", ballData)
+      .post("https://rohan-garad-full-stack-backend.onrender.com/api/scores/ball", ballData)
       .then((res) => {
         setScore(res.data.matchScore);
 

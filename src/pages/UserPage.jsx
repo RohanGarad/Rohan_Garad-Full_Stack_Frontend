@@ -14,7 +14,7 @@ const UserPage = () => {
     localStorage.setItem("matchId", matchId);
 
     // Initialize socket connection
-    const socket = io("http://localhost:5000", {
+    const socket = io("https://rohan-garad-full-stack-backend.onrender.com", {
       reconnection: true,
       reconnectionAttempts: Infinity,
       reconnectionDelay: 1000,
@@ -23,7 +23,7 @@ const UserPage = () => {
     // Fetch initial score for the selected matchId
     if (matchId) {
       axios
-        .get(`http://localhost:5000/api/scores/${matchId}/latest`)
+        .get(`https://rohan-garad-full-stack-backend.onrender.com/api/scores/${matchId}/latest`)
         .then((res) => {
           console.log("Initial score data:", res.data); // Log to check the response
           setScore(res.data);
